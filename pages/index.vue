@@ -1,11 +1,11 @@
 <template>
   <div class="flex flex-col items-center justify-center">
 
-    <UContainer class="bg-zinc-200 dark:bg-zinc-800 h-[32rem] w-[24rem] rounded-md py-8 flex flex-col items-center justify-between">
+    <UContainer class="bg-zinc-200 dark:bg-zinc-800 shadow-lg h-[32rem] w-[24rem] rounded-md py-8 flex flex-col items-center justify-between">
 
       <div>
         <div>
-          <h4 class="text-3xl font-bold text-center">Welcome to the <br><span class="font-[900]">Booker</span> booking app.</h4>
+          <h4 class="text-3xl font-bold text-center">Welcome to the <br><span class="font-[900]">{{ useRuntimeConfig().public.brandName }}</span> booking app.</h4>
           <p class="text-md font-light text-center mt-2">Please log in or create an account.</p>
         </div>
 

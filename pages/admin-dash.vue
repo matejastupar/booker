@@ -3,13 +3,14 @@
 
     <div class="flex w-full h-20 justify-between items-center px-6">
       <img :src="useRuntimeConfig().public.brandLogo" class="h-14" alt="logo.png">
+      <h3 class="font-primary font-[900] text-3xl text-zinc-500">ADMIN DASHBOARD</h3>
       <NuxtLink to="/">
         <UButton label="Sign Out" size="sm" icon="i-line-md-logout" trailing :ui="{ rounded: 'rounded-full', base: 'transition-color duration-300' }" color="red" variant="soft" />
       </NuxtLink>
     </div>
 
     <div class="flex w-full justify-between pl-3 pr-6">
-      <div class="w-[80%] h-full">
+      <div class="w-full h-full">
         <UTabs class="w-full" :items="dashTabs" :ui="{
           list: {
             background: 'bg-zinc-200 dark:bg-zinc-800',
@@ -21,24 +22,6 @@
             }
           }
         }" />
-      </div>
-      <div class="flex flex-col h-full w-[15%] items-end space-y-3">
-        <UButton label="New Booking" @click="isOpen = true" size="lg" icon="i-line-md-plus-circle" trailing :ui="{ base: 'transition-color duration-300', font: 'font-bold' }" color="primary" variant="solid" />
-      
-        <UModal v-model="isOpen">
-          <div class="flex flex-col items-center px-4 py-6">
-            <h3 class="text-2xl font-bold mb-2 select-none">New Booking Request</h3>
-            <UDivider size="xs" />
-
-            <UTextarea color="white" variant="outline" placeholder="Your note for this booking" size="md" :rows="2" class="w-full mt-2" />
-            <span class="flex self-start mt-2">
-              <UToggle color="red" v-model="isUrgent" size="md" on-icon="i-line-md-alert-circle-loop" />
-              <p class="text-sm ml-2 text-gray-600 dark:text-gray-400">Is this booking urgent?</p>
-            </span>
-            
-            <UButton label="Confirm" @click="isOpen = false; toast.add({ title: 'New booking made', timeout: 2500, icon: 'i-line-md-clipboard-check'});" size="sm" icon="i-line-md-check-all" trailing :ui="{ rounded: 'rounded-full', base: 'transition-color duration-300 mt-8' }" color="primary" variant="solid" />
-          </div>
-        </UModal>
       </div>
     </div>
 
@@ -63,7 +46,7 @@
 <script setup lang="ts">
 
 useHead({
-  title: 'Booker | Dashboard'
+  title: 'Booker | Admin Dashboard'
 });
 
 const toast = useToast();
@@ -86,17 +69,16 @@ const dashTabs = [{
   content: 'Overview of most important information.',
   icon: 'i-line-md-list-3',
 }, {
-  label: 'Bookings',
-  content: 'Users Previous and Future Bookings.',
-  icon: 'i-line-md-bell-loop',
+  label: 'All Bookings',
+  content: 'Confirm or deny users booking requests.',
+  icon: 'i-line-md-star-pulsating-loop',
 }, {
-  label: 'Profile',
-  content: 'Users data and edit feature.',
-  icon: 'i-line-md-account',
+  label: 'Booking Period',
+  content: 'Set available times for bookings.',
+  icon: 'i-line-md-arrows-horizontal',
+},{
+  label: 'Configure Booker',
+  content: 'Configuration for the app.',
+  icon: 'i-line-md-cog-loop',
 }];
-
-/* NEW BOOKING LOGIC */
-const isOpen = ref(false);
-const isUrgent = ref(false);
-
 </script>
